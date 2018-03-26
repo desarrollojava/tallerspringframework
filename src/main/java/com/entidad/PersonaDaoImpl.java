@@ -31,29 +31,18 @@ public class PersonaDaoImpl implements PersonaDao {
 
     @Override
     public void updatePersona(Persona persona) {
-        SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(persona);
-        String sql = "update persona set nombres=:nombres,apellidos=:apellidos,direccionDomicilio=:direccionDomicilio where idPersona=:idPersona";
-        this.namedParameterJdbcTemplate.update(sql, namedParameters);
+      
     }
 
     @Override
     public void deletePersona(Persona persona) {
-        SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(persona);
-        String sql = "delete persona  where idPersona=:idPersona";
-        this.namedParameterJdbcTemplate.update(sql, namedParameters);
+      
     }
 
     @Override
     public Persona findPersonaById(int idPersona) {
         Persona persona = null;
-        try {
-            //parametros por indice  ?
-            persona = jdbcTemplate.queryForObject("select * from persona where idPersona=?", new PersonaRpwMapper(), idPersona);
-
-        } catch (EmptyResultDataAccessException e) {
-            persona = null;
-
-        }
+       
         return persona;
     }
 
@@ -66,9 +55,8 @@ public class PersonaDaoImpl implements PersonaDao {
 
     @Override
     public int contadorPersonasByNombre(Persona persona) {
-        String sql = "select count(*) from Persona where nombres=:nombres";
-        SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(persona);
-        return this.namedParameterJdbcTemplate.queryForObject(sql, namedParameters, int.class);
+        
+        return 0;
     }
 
     @Override
@@ -79,9 +67,7 @@ public class PersonaDaoImpl implements PersonaDao {
 
     @Override
     public void insertarPersona(Persona persona) {
-        SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(persona);
-        String sql = "insert into persona(nombres,apellidos,direccionDomicilio) values(:nombres,:apellidos,:direccionDomicilio)";
-        this.namedParameterJdbcTemplate.update(sql, namedParameters);
+       
     }
 
 }
