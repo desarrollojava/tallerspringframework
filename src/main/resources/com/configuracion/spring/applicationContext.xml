@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:aop="http://www.springframework.org/schema/aop" 
+           xmlns:jdbc="http://www.springframework.org/schema/jdbc" 
+       xmlns:context="http://www.springframework.org/schema/context" 
+       xmlns:p="http://www.springframework.org/schema/p" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context.xsd 
+http://www.springframework.org/schema/aop 
+http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/jdbc
+http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd" 
+> 
+    <context:component-scan base-package="com.entidad"/>
+ <!-- configuracion de AOP primer ejemplo
+   <aop:config>
+     <aop:aspect id = "myAspect" ref="estudianteAspecto">
+            <aop:pointcut expression="execution(* com.profesor.Profesor.ejecutar(..))" id="clases"/>
+            <aop:after-returning pointcut-ref="clases" method="realizarPreguntas" />
+            <aop:before pointcut-ref="clases" method="apagarCelulares" />            
+            <aop:before pointcut-ref="clases" method="sentarse" />
+            <aop:after-throwing pointcut-ref="clases" method="salirDelAula" />
+        </aop:aspect> 
+    </aop:config>-->
+     
+    
+    
+    <!-- configuracion de AOP segundo ejercicio
+    <aop:config>
+        <aop:aspect id = "aspectoEstudiante" ref="estudianteAspecto">
+            <aop:pointcut expression="execution(* com.profesor.Profesor.ejecutar(..))" id="clases"/>
+            <aop:around pointcut-ref="clases" method="monitorearClasesMatematica" />
+        </aop:aspect> 
+    </aop:config> -->
+    
+     <!-- configuracion de AOP tercer ejercicio abacra todas las funciones de una clase
+    <aop:config>
+        <aop:aspect id = "idEstudianteAspecto" ref="estudianteAspecto">
+            <aop:pointcut expression="execution( * com.aop.Alumno.*(..))" id="clases"/>
+            <aop:around pointcut-ref="clases" method="monitorearClasesMatematica" />
+        </aop:aspect> 
+    </aop:config> -->
+    
+    <!-- configuracion de AOP cuarto ejercicio abarca todas las funciones de un paquete
+    <aop:config>
+        <aop:aspect id = "idAspectoEstudiante" ref="estudianteAspecto">
+            <aop:pointcut expression="execution( * com.aop.*.*(..))" id="clases"/>
+            <aop:around pointcut-ref="clases" method="monitorearClasesMatematica" />
+        </aop:aspect> 
+    </aop:config> -->
+    
+    
+    
+        <!-- configuracion de AOP quinto ejercicio abarca todas las funciones que empiec con get
+
+    <aop:config>
+        <aop:aspect id="idClaseAspecto" ref="claseAspecto">
+            <aop:pointcut expression="execution( * com.aop.Alumno.get*())" id="clases"/>
+            <aop:around pointcut-ref="clases" method="monitorearClasesMatematica" />
+        </aop:aspect> 
+    </aop:config> -->
+    
+
+    <!--   <bean id="idBeanMiembroDepDisciplina" class="com.profesor.Investigador">
+        <property name="desicionAdministrativa"  value="Sancionar profesores"/>
+        bean interno 
+        <property name="iConsejoInvestigacion">
+            <bean class="com.profesor.DepDisciplina" />
+        </property>
+    </bean> -->
+</beans>
